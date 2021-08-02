@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=David+Libre&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=David+Libre&family=Lobster&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=David+Libre&family=Lobster&family=Secular+One&display=swap");
+
+body {
+  background-image: linear-gradient(
+    rgba(240, 135, 16, 0.5),
+    rgba(255, 0, 0, 0.5),
+    rgba(0, 255, 0, 0.8),
+    rgba(0, 0, 255, 0.8)
+  );
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0px;
+  width: 100%;
+}
+
+table,
+th {
+  border: 1px solid rgba(255, 34, 34, 0.2);
+  border-collapse: collapse;
+}
+header {
+  margin-top: 0px;
+  text-align: right;
+  font-family: "David Libre", serif;
+  font-weight: bolder;
+  color: white;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 300px;
+  line-height: 10;
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiX65OxwPMu55kle7GmzEVHPzGzjolgarsTA&usqp=CAU");
+}
+
+.background-filter {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  width: 100%;
+}
+
+h1 {
+  margin-top: 0px;
+  text-align: center;
+}
+
+#min_index,
+#max_index {
+  width: 30px;
+  text-align: center;
+  background-color: white;
+  color: blue;
+}
+input:hover {
+  cursor: pointer;
+  border: 2px rgba(0, 0, 255, 0.5) solid;
+}
+button:hover {
+  cursor: pointer;
+}
+
+input {
+  font-family: "Lobster", cursive;
+}
+button {
+  font-family: "Lobster", cursive;
+  background-color: white;
+}
+select {
+  font-family: "Lobster", cursive;
+}
+
+#min_index:hover {
+  cursor: pointer;
+}
+#max_index:hover {
+  cursor: pointer;
+}
+
+.filter {
+  width: 70%;
+  margin: auto;
+  text-align: center;
+  padding: 10px;
+}
+th {
+  text-align: center;
+}
+table {
+  max-width: 70%;
+  margin: auto;
+  text-align: right;
+  font-family: "Secular One", sans-serif;
+  height: 100%;
+}
+@media screen and (max-width: 800px) {
+  td:nth-child(n + 7) {
+    display: none;
+  }
+  th:nth-child(n + 7) {
+    display: none;
+  }
+}
