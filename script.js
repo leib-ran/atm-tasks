@@ -1,5 +1,3 @@
-let ran = "";
-
 var DataFrame = dfjs.DataFrame;
 
 let data = fetch("atm_enboi.csv")
@@ -12,6 +10,11 @@ let data = fetch("atm_enboi.csv")
   .then((dataParse) => {
     createfilterBtn(dataParse[0]);
     createTable(dataParse.slice(1), dataParse[0]);
+    let markers = init_map(dataParse);
+
+    for (let i = 0; i < markers.length; i++) {
+      markers[i].setMap(map);
+    }
     return dataParse;
   })
   .then((dataParse) => {
@@ -106,6 +109,44 @@ function createfilterBtn(columns) {
     selectEl.innerHTML += `<option value = "${element}">${element}</option>`;
   });
 }
+google.maps.event.addDomListener(window, "load", init_map);
+function init_map(spots) {
+  let selectorMapElement = document.querySelector("#gmap_canvas");
+  let arrayMarkers = [];
+  let googleMapLat = 31.4037193;
+  let googleMapLong = 33.9606947;
+
+  const myOptions = {
+    zoom: 8,
+    center: new google.maps.LatLng(googleMapLat, googleMapLong),
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+  };
+  map = new google.maps.Map(selectorMapElement, myOptions);
+
+  for (let index = 0; index < spots.length; index++) {
+    let spot = spots[index];
+    arrayMarkers[index] = new google.maps.Marker({
+      map: map,
+      position: new google.maps.LatLng(spot[11], spot[12]),
+    });
+    infowindow = new google.maps.InfoWindow({
+      content: `
+      <strong>ATM ${spot[0]} 5</strong>
+      <br>${spot[6]},${spot[4]}<br>
+      `,
+    });
+    google.maps.event.addListener(arrayMarkers[index], "click", function () {
+      infowindow = new google.maps.InfoWindow({
+        content: `
+        <strong>ATM ${spots[index][0]}</strong>
+        <br>${spots[index][6]},${spots[index][4]}<br>
+        `,
+      });
+      infowindow.open(map, arrayMarkers[index]);
+    });
+  }
+  return arrayMarkers;
+}
 
 function createTable(data, cols) {
   let tableClass = document.querySelector(".table");
@@ -122,9 +163,8 @@ function createTable(data, cols) {
     trEl.innerHTML += `<th>${cols[j]}</th>`;
   }
   tableEl.appendChild(trEl);
+  init_map(data.slice(Number(minIndex.value), maxIterations));
 
-  console.log(minIndex.value);
-  console.log(maxIterations);
   for (let i = Number(minIndex.value); i < maxIterations; i++) {
     trEl = document.createElement("tr");
     for (let j = 0; j < data[0].length; j++) {
@@ -132,7 +172,7 @@ function createTable(data, cols) {
     }
     tableEl.appendChild(trEl);
   }
-  tableClass.appendChild(tableEl);
+  tableClass.appendChild(tableEl, maxIterations);
 }
 
 function filterTable(df, cols) {
