@@ -125,7 +125,7 @@ function init_map(spots) {
 
   for (let index = 0; index < spots.length; index++) {
     let spot = spots[index];
-    if (spot[11] < 34) {
+    if (spot[12] > 34) {
       arrayMarkers[index] = new google.maps.Marker({
         map: map,
         position: new google.maps.LatLng(spot[11], spot[12]),
