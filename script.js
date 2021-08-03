@@ -125,10 +125,18 @@ function init_map(spots) {
 
   for (let index = 0; index < spots.length; index++) {
     let spot = spots[index];
-    arrayMarkers[index] = new google.maps.Marker({
-      map: map,
-      position: new google.maps.LatLng(spot[11], spot[12]),
-    });
+    if (spot[11] < 34) {
+      arrayMarkers[index] = new google.maps.Marker({
+        map: map,
+        position: new google.maps.LatLng(spot[11], spot[12]),
+      });
+    } else {
+      arrayMarkers[index] = new google.maps.Marker({
+        map: map,
+        position: new google.maps.LatLng(spot[12], spot[11]),
+      });
+    }
+
     infowindow = new google.maps.InfoWindow({
       content: `
       <strong>ATM ${spot[0]} 5</strong>
