@@ -30,7 +30,8 @@ header {
   background-size: cover;
   height: 300px;
   line-height: 10;
-  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiX65OxwPMu55kle7GmzEVHPzGzjolgarsTA&usqp=CAU");
+  background-image: url("  https://c8.alamy.com/comp/TC37WK/chiangmaithailand-may-32019-atm-of-bangkok-bank-high-resolution-image-gallery-TC37WK.jpg");
+  background-position: center;
 }
 
 .background-filter {
@@ -111,5 +112,8 @@ table {
   }
   th:nth-child(n + 7) {
     display: none;
+  }
+  header {
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiX65OxwPMu55kle7GmzEVHPzGzjolgarsTA&usqp=CAU");
   }
 }
