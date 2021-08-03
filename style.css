@@ -93,6 +93,18 @@ table {
   font-family: "Secular One", sans-serif;
   height: 100%;
 }
+
+.map-container,
+#gmap_canvas {
+  height: 500px;
+  width: 70%;
+  margin: auto;
+}
+#gmap_canvas img {
+  max-width: none !important;
+  background: none !important;
+}
+
 @media screen and (max-width: 800px) {
   td:nth-child(n + 7) {
     display: none;
